@@ -9,4 +9,16 @@ import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
+window.addEventListener("load", () => {
+    if ('serviceWorker' in navigator) {
+        console.log("In window load event")
+        navigator.serviceWorker.register("service-worker.js")
+        .then((registration) => {
+            console.log("I am readey to register a service worker");
 
+        })
+        .catch(e => console.log("Somethings went wrong!!"))
+    } else {
+        console.log("Service worker not support");
+    }
+})
